@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="zh-Hant" class="bg-slate-950">
 <head>
   <meta charset="UTF-8">
