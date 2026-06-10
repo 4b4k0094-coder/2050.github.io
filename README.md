@@ -1,9 +1,9 @@
-<html lang="zh-Hant" class="h-full">
+<!DOCTYPE html>
+<html lang="zh-Hant" class="bg-slate-950">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>零碳防線：2050 (Net Zero Frontier)</title>
-  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     /* 自訂滾動條樣式 */
@@ -38,12 +38,10 @@
     }
   </style>
 </head>
-<body class="h-full text-slate-100 font-sans select-none overflow-hidden bg-slate-950">
+<body class="min-h-screen text-slate-100 font-sans select-none bg-slate-950">
 
-  <!-- 1公分邊界外包裝容器 -->
-  <div class="outer-container h-full w-full flex items-center justify-center">
-    <!-- 遊戲主體視窗 -->
-    <div id="app" class="h-full w-full bg-slate-900 rounded-2xl border border-slate-800 shadow-2xl shadow-emerald-950/20 overflow-hidden flex flex-col relative"></div>
+  <div class="outer-container min-h-screen w-full flex flex-col items-center justify-center">
+    <div id="app" class="min-h-[800px] w-full max-w-6xl bg-slate-900 rounded-2xl border border-slate-800 shadow-2xl shadow-emerald-950/20 overflow-hidden flex flex-col relative"></div>
   </div>
 
   <script>
@@ -552,9 +550,7 @@
 
       // 組合主畫面 HTML
       root.innerHTML = `
-        <!-- 頂部狀態控制列 -->
         <header class="bg-slate-900 border-b border-slate-800 p-2.5 grid grid-cols-3 items-center shadow-md z-10">
-          <!-- 左：氣候溫度計 -->
           <div class="flex space-x-4">
             <div class="flex items-center space-x-2">
               <div class="${state.temperature > 1.8 ? 'text-red-500 animate-pulse' : 'text-amber-500'}">
@@ -579,7 +575,6 @@
             </div>
           </div>
 
-          <!-- 中間：回合數與 AP -->
           <div class="text-center">
             <div class="text-xs font-bold tracking-widest text-emerald-500 mb-0.5">
               ROUND ${state.turn} <span class="text-slate-600">/ ${MAX_TURNS}</span>
@@ -587,7 +582,6 @@
             <div class="flex justify-center space-x-1">${apDots}</div>
           </div>
 
-          <!-- 右：關鍵資源 -->
           <div class="flex justify-end space-x-4">
             <div class="flex items-center space-x-2">
               <div class="${state.budget < 0 ? 'text-red-500' : 'text-yellow-500'}">${ICONS.dollar}</div>
@@ -613,9 +607,7 @@
           </div>
         </header>
 
-        <!-- 主要控制面板 -->
         <main class="flex-1 flex overflow-hidden">
-          <!-- 左側通報 -->
           <aside class="w-52 bg-slate-900 border-r border-slate-800 p-3 flex flex-col">
             <h2 class="text-[10px] font-bold text-slate-500 tracking-wider mb-2.5 uppercase">狀態與通報</h2>
             
@@ -637,7 +629,6 @@
             </div>
           </aside>
 
-          <!-- 地圖主視角 -->
           <section class="flex-1 relative flex flex-col items-center justify-center transition-colors duration-1000 ${mapBg}">
             <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px]"></div>
             
@@ -654,7 +645,6 @@
           </section>
         </main>
 
-        <!-- 手牌區 -->
         <footer class="bg-slate-900 border-t border-slate-800 p-4 h-52 relative">
           <div class="absolute top-1 left-4 text-[10px] text-slate-500 font-bold tracking-widest uppercase">
             政策手牌 (${state.hand.length}/5) | 牌庫: ${state.deck.length}
@@ -664,7 +654,6 @@
           </div>
         </footer>
 
-        <!-- 自訂通知 Modal (替代 alert) -->
         ${state.customModal ? `
           <div class="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
             <div class="bg-slate-900 border border-slate-700 rounded-xl max-w-xs w-full p-5 text-center space-y-3 shadow-2xl animate-in fade-in zoom-in-95 duration-150">
